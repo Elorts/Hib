@@ -13,7 +13,11 @@ public class Transaction {
     private Double amount;
     private String type;
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private Account account;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getTransactionId() {
         return transactionId;
     }
@@ -47,4 +51,13 @@ public class Transaction {
         this.type = type;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }
