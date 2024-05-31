@@ -16,6 +16,7 @@ public class User {
     private String password;
     private String name;
     private List<Account> accounts = new ArrayList<>();
+    private Address address;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,5 +62,14 @@ public class User {
 
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
+    }
+
+    @OneToOne(mappedBy = "user")
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
