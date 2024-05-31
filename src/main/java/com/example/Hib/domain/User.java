@@ -10,14 +10,15 @@ import java.util.List;
 @Table(name = "users") // use only if you want to change name of the class-table
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long userId;
     private String userName;
     private String password;
     private String name;
     private List<Account> accounts = new ArrayList<>();
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getUserId() {
         return userId;
     }
