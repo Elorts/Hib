@@ -23,4 +23,8 @@ public class UserService {
         Optional<User> userOpt = userRepo.findById(userId);
         return userOpt.orElse(new User());
     }
+
+    public User createUser(User user) {
+        return userRepo.save(user);
+    }
 }
