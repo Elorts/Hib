@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.http://thymeleaf.org">
     <head>
         <title>
             Users
@@ -7,8 +7,8 @@
     </head>
     <body>
         <h1>Users</h1>
-        <div>
-
+        <div th:each = "user : ${usersFromDB}">
+            <span th:text="${user.userName}"></span>
         </div>
     </body>
 </html>
