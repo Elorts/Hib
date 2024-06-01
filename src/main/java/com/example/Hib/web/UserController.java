@@ -17,6 +17,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/register")
+    public String createUser (ModelMap model) {
+        model.put("user", new User());
+        return "register";
+    }
+
     @GetMapping("/users")
     public String getAllUsers(ModelMap model) {
         List<User> users = userService.findAll();
