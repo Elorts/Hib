@@ -19,14 +19,17 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getTransactionId() {
+
         return transactionId;
     }
 
     public void setTransactionId(Long transactionId) {
+
         this.transactionId = transactionId;
     }
 
     public LocalDateTime getTransactionDate() {
+
         return transactionDate;
     }
 
@@ -35,19 +38,23 @@ public class Transaction {
     }
 
     public Double getAmount() {
+
         return amount;
     }
 
     public void setAmount(Double amount) {
+
         this.amount = amount;
     }
 
     @Column(length = 1)
     public String getType() {
+
         return type;
     }
 
     public void setType(String type) {
+
         this.type = type;
     }
 
