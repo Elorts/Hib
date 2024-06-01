@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity  // Class name = User, DB table name = user
+@Entity  //  Class name = User, DB table name = user
 @Table(name = "users") // use only if you want to change name of the class-table
 public class User {
 
