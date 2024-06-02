@@ -35,6 +35,15 @@ public class UserController {
     public String getAllUsers(ModelMap model) {
         List<User> users = userService.findAll();
         model.put("users", users);
+
+        return "users";
+    }
+
+    @GetMapping("/user")
+    public String getOneUsers(ModelMap model) {
+        List<User> users = userService.findByUserName("Asas");
+        model.put("users", users);
+        model.put("user", users.get(0));
         return "users";
     }
 
