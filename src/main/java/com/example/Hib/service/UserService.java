@@ -1,6 +1,8 @@
 package com.example.Hib.service;
 
+import com.example.Hib.domain.Account;
 import com.example.Hib.domain.User;
+import com.example.Hib.repository.AccountRepository;
 import com.example.Hib.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private AccountRepository accountRepo;
 
     public List<User> findByUserName(String userName) {
         return userRepo.findByUserName(userName);
@@ -57,6 +62,21 @@ public class UserService {
     }
 
     public User saveUser(User user) {
+        if (user.getUserId() == null) {
+            Account checking = new Account();
+            checking.setAccountName("Checking Account");
+            checking.getUsers().add(user);
+
+            Account savings = new Account();
+            savings.setAccountName("SA");
+            savings.getUsers().add(user);
+
+            user.getAccounts().add(checking);
+            user.getAccounts().add(savings);
+
+            accountRepo.save(checking);
+            accountRepo.save(savings);
+        }
         return userRepo.save(user);
     }
 
