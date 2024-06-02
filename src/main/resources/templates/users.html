@@ -8,7 +8,7 @@
     <body>
         <h1>Users</h1>
         <div th:if="${#lists.size(users) == 1}">    <!-- gets size of the list thymeleaf methot utility-->
-            <form action = "" method = "post">
+            <form action = "" method = "post">      <!-- same as action = "localhost:8080/users"-->
                 <div>
                     Username: <input type = "text" th:field="${user.userName}"/>
                 </div>
@@ -22,6 +22,12 @@
                     <input type = "submit" value = "Update User Account" />
                 </div>
             </form>
+
+            <form th:action = "@{/users/{userId}/delete(userId = ${user.userId})}" method = "post">
+                <input type = "submit" value = "Delete User Account"/>
+            </form>
+
+
         </div>
         <div th:unless = "${#lists.size(users) == 1}" th:each = "user : ${users}">
             <span th:text="${user.userId}"></span><br/>
