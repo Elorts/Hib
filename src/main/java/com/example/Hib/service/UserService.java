@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -40,9 +41,15 @@ public class UserService {
             return new User();
     }
 
-    public List<User> findAll () {
-        return userRepo.findAll();
+//    public List<User> findAll () {
+//        return userRepo.findAll();
+//    }
+
+    public Set<User> findAll () {
+        return userRepo.findAllUsersWithAccountsAndAddresses();
     }
+
+
 
     public User findOne(Long userId){
         Optional<User> userOpt = userRepo.findById(userId);

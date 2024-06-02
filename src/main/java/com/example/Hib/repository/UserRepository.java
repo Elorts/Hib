@@ -1,6 +1,5 @@
 package com.example.Hib.repository;
 
-import com.example.Hib.domain.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,6 +7,7 @@ import com.example.Hib.domain.User;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -26,4 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // select * from users where userName = :userName
     @Query("select u from User u where userName = :userName")
     List<User> findExactlyOneUserByUserName(String userName);
+
+    @Query("select u from User u" + " left join fetch u.accounts" + " left join fetch u.address")
+    Set<User> findAllUsersWithAccountsAndAddresses();
 }

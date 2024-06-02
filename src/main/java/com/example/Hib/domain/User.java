@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity  //  Class name = User, DB table name = user
@@ -94,4 +95,38 @@ public class User {
                 ", address=" + address +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId);
+    }
+
+    //    @Override
+//    public boolean equals(Object o) {
+//        if (this == o)
+//            return true;
+//        if (o == null)
+//            return false;
+//        if (getClass() != obj.getClass())
+//            return false;
+//
+//
+//        return Objects.equals(getUserId(), user.getUserId());
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        final int prime = 31;
+//        int result = 1;
+//        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+//        return result;
+//    }
 }

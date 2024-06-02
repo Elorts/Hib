@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -33,7 +34,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String getAllUsers(ModelMap model) {
-        List<User> users = userService.findAll();
+        Set<User> users = userService.findAll();
         model.put("users", users);
 
         return "users";
@@ -44,6 +45,7 @@ public class UserController {
         List<User> users = userService.findByUserName("Asas");
         model.put("users", users);
         model.put("user", users.get(0));
+        // changed: model.put("user", users.iterator().next());
         return "users";
     }
 
