@@ -34,14 +34,14 @@ public class UserController {
     @GetMapping("/users")
     public String getAllUsers(ModelMap model) {
         List<User> users = userService.findAll();
-        model.put("usersFromDB", users);
+        model.put("users", users);
         return "users";
     }
 
     @GetMapping("/users/{userId}")
     public String getUser(ModelMap model, @PathVariable Long userId) {
         User user = userService.findOne(userId);
-        model.put("usersFromDB", Arrays.asList(user));
+        model.put("users", Arrays.asList(user));
         return "users";
     }
 }

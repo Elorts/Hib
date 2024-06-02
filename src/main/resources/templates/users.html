@@ -7,7 +7,23 @@
     </head>
     <body>
         <h1>Users</h1>
-        <div th:each = "user : ${usersFromDB}">
+        <div th:if="${#lists.size(users) == 1}">    <!-- gets size of the list thymeleaf methot utility-->
+            <form action = "" method = "post">
+                <div>
+                    Username: <input type = "text" th:field="${user.userName}"/>
+                </div>
+                <div>
+                    Password: <input type = "password" th:field="${user.password}"/>
+                </div>
+                <div>
+                    Full Name: <input type = "text" th:field= "${user.name}"/>
+                </div>
+                <div>
+                    <input type = "submit" value = "Submit" />
+                </div>
+            </form>
+        </div>
+        <div th:unless = "${#lists.size(users) == 1}" th:each = "user : ${users}">
             <span th:text="${user.userId}"></span><br/>
             <span th:text="${user.userName}"></span><br/>
             <span th:text="${user.name}"></span><br/>
