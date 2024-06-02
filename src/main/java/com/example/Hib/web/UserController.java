@@ -47,6 +47,14 @@ public class UserController {
         return "users";
     }
 
+    @GetMapping("/bubu/{userId}")
+    public String getBubu(ModelMap model, @PathVariable Long userId) {
+        User user = userService.findExactlyOneUserByUserName("deiwis@yahoo.com");
+        model.put("users", user);
+        model.put("user", user);
+        return "users";
+    }
+
     @GetMapping("/users/{userId}")
     public String getUser(ModelMap model, @PathVariable Long userId) {
         User user = userService.findOne(userId);

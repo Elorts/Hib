@@ -2,6 +2,7 @@ package com.example.Hib.repository;
 
 import com.example.Hib.domain.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.example.Hib.domain.User;
 
@@ -21,4 +22,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByUserNameAndName(String userName, String name);
 
     List<User> findByCreatedDateBetween(LocalDate date1, LocalDate date2);
+
+    // select * from users where userName = :userName
+    @Query("select u from User u where userName = :userName")
+    List<User> findExactlyOneUserByUserName(String userName);
 }

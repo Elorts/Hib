@@ -32,6 +32,14 @@ public class UserService {
         return userRepo.findByCreatedDateBetween(date1, date2);
     }
 
+    public User findExactlyOneUserByUserName(String userName) {
+        List <User> users = userRepo.findExactlyOneUserByUserName(userName);
+        if (users.size() > 0)
+            return users.get(0);
+        else
+            return new User();
+    }
+
     public List<User> findAll () {
         return userRepo.findAll();
     }
