@@ -2,6 +2,7 @@ package com.example.Hib.domain;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class User {
     private String name;
     private List<Account> accounts = new ArrayList<>();
     private Address address;
+    private LocalDate createdDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,6 +73,14 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
     }
 
     @Override
